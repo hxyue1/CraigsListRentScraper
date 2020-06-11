@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 import numpy as np
 import pandas as pd
 import re
+from datetime import datetime
 
 #For graphing
 import seaborn as sns
@@ -111,5 +112,8 @@ def CraigsListToDF(urlpage, num_pages=120):
         print(page_count)
         
     results_df = pd.DataFrame(results_list, columns = ['Price', 'Bedrooms', 'Area', 'Location'])
+    current_date = datetime.today()
+    results_df['Date'] = current_date
+    
     
     return(results_df)
